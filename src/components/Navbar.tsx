@@ -2,17 +2,23 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Search, ShoppingCart, Heart, User, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-export default function Navbar() {
+interface NavbarProps {
+  cartCount?: number;
+}
+
+export default function Navbar({ cartCount = 0 }: NavbarProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      window.location.href = `/?search=${encodeURIComponent(searchQuery.trim())}`;
+      router.push(`/?search=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
 
@@ -58,9 +64,11 @@ export default function Navbar() {
             <Button variant="outline" className="relative rounded-full gap-2 border-indigo-200 hover:border-indigo-500">
               <ShoppingCart className="h-5 w-5 text-indigo-600" />
               <span className="hidden sm:inline font-medium">Cart</span>
-              <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
             </Button>
           </Link>
 
