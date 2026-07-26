@@ -17,6 +17,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
     <div className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
       {/* Product Image Container */}
       <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={mainImage}
           alt={product.title}

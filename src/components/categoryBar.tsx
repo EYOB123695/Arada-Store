@@ -79,6 +79,7 @@ export default function CategoryBar({
               >
                 {category.image && (
                   <div className="relative h-5 w-5 rounded-full overflow-hidden shrink-0 bg-gray-200">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={category.image}
                       alt={category.name}

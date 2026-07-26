@@ -45,7 +45,7 @@ export default function ProductGrid({
             <PackageSearch className="h-12 w-12 text-gray-400 mb-3" />
             <h3 className="text-lg font-semibold text-gray-900">No Products Found</h3>
             <p className="text-sm text-gray-500 max-w-sm mt-1">
-              We couldn't find any products matching your selected filter or search query. Try clearing your search or filters.
+              We couldn&apos;t find any products matching your selected filter or search query. Try clearing your search or filters.
             </p>
           </div>
         )}
