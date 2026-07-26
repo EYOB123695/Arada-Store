@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -46,6 +48,7 @@ export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const router = useRouter();
 
   const form = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
@@ -66,6 +69,7 @@ export function LoginForm() {
         localStorage.setItem("platzi_refresh_token", data.refresh_token);
       }
       setLoginSuccess(true);
+      router.push("/");
     } catch (err: unknown) {
       if (err instanceof Error) {
         setApiError(err.message);
