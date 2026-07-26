@@ -22,7 +22,7 @@ export default function CategoryBar({categories, selectedCategoryId, onSelectCat
         >
 
         <div className = "container px-4 md:px-8 mx-auto">
-            <div className = "flex iitems-center justify-between mb-4 ">
+            <div className = "flex items-center justify-between mb-4 ">
                 <h2 className = " text-xl font-bold tracking-tight text-gray-900">
                     Browse by Category 
 
