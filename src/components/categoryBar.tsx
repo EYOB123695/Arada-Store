@@ -78,11 +78,15 @@ export default function CategoryBar({
                 }`}
               >
                 {category.image && (
-                  <div className="relative h-5 w-5 rounded-full overflow-hidden shrink-0">
+                  <div className="relative h-5 w-5 rounded-full overflow-hidden shrink-0 bg-gray-200">
                     <img
                       src={category.image}
                       alt={category.name}
                       className="h-full w-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop";
+                      }}
                     />
                   </div>
                 )}

@@ -12,7 +12,7 @@ export default function LoginPage() {
           </div>
 
           <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Nova<span className="text-blue-600 dark:text-blue-500">Store</span>
+            Arada<span className="text-blue-600 dark:text-blue-500">Store</span>
           </h1>
 
           <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-xs">

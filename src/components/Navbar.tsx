@@ -29,7 +29,7 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
         <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight">
           <ShoppingBag className="h-6 w-6 text-indigo-600" />
           <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-            PlatziStore
+            AradaStore
           </span>
         </Link>
 

@@ -3,6 +3,7 @@ import HeroBanner from "@/components/HeroBanner";
 import CategoryBar from "@/components/categoryBar";
 import ProductGrid from "@/components/ProductGrid";
 import Footer from "@/components/Footer";
+import AuthGuard from "@/components/auth/AuthGuard";
 
 import {
   getProducts,
@@ -41,6 +42,7 @@ export default async function HomePage({searchParams}: HomePageProps) {
 
      return (
     <div className="min-h-screen flex flex-col bg-white">
+      <AuthGuard />
       <Navbar />
       <main className="flex-1">
         <HeroBanner />

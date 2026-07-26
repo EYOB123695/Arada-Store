@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ShoppingBag, Send, Globe, Mail, Share2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +17,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white">
               <ShoppingBag className="h-6 w-6 text-indigo-400" />
-              <span>PlatziStore</span>
+              <span>AradaStore</span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
               Your one-stop destination for modern lifestyle essentials. Powered by high-speed Next.js server components and real-time API integrations.
@@ -85,7 +87,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
-          <p>© {new Date().getFullYear()} PlatziStore Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} AradaStore Inc. All rights reserved.</p>
           <p>Built with Next.js App Router, Tailwind CSS & Platzi API.</p>
         </div>
       </div>
