@@ -17,12 +17,14 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
     <div className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
       {/* Product Image Container */}
       <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={mainImage}
-          alt={product.title}
-          className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-        />
+        <Link href={`/products/${product.id}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={mainImage}
+            alt={product.title}
+            className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500 cursor-pointer"
+          />
+        </Link>
 
         {/* Category Badge Over Image */}
         <span className="absolute top-3 left-3 bg-white/90 backdrop-blur text-gray-800 text-xs font-semibold px-2.5 py-1 rounded-full border border-gray-200/50 shadow-sm">
