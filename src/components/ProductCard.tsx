@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ShoppingCart, Star, Eye } from "lucide-react";
 import { Product } from "@/lib/platzi-products";
 import { Button } from "@/components/ui/button";
+import { useCartStore } from "@/store/useCartStore";
+
 
 interface ProductCardProps {
   product: Product;
@@ -12,6 +14,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const mainImage = product.images[0] || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop";
+  const addItem = useCartStore((state) => state.addItem);
 
   return (
     <div className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
@@ -71,13 +74,21 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           </div>
 
           <Button
-            onClick={() => onAddToCart && onAddToCart(product)}
+            onClick={() =>
+              addItem({
+                id: String(product.id),
+                name: product.title,
+                price: product.price,
+                image: product.images[0] || "",
+              })
+            }
             size="sm"
-            className="rounded-full gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm"
+            className="rounded-full gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white"
           >
             <ShoppingCart className="h-4 w-4" />
             <span>Add</span>
           </Button>
+
         </div>
       </div>
     </div>
