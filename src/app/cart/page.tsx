@@ -29,7 +29,7 @@ export default function CartPage() {
           <div className="bg-white rounded-3xl border border-gray-100 p-12 text-center space-y-4 max-w-md mx-auto shadow-sm">
             <ShoppingBag className="h-16 w-16 text-gray-300 mx-auto" />
             <h2 className="text-2xl font-bold text-gray-900">Your cart is empty</h2>
-            <p className="text-gray-500 text-sm">Looks like you haven't added any products to your cart yet.</p>
+            <p className="text-gray-500 text-sm">Looks like you haven&apos;t added any products to your cart yet.</p>
             <Link href="/">
               <Button className="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-6">
                 Browse Products

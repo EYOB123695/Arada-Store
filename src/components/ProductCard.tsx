@@ -9,10 +9,9 @@ import { useCartStore } from "@/store/useCartStore";
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart?: (product: Product) => void;
 }
 
-export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   const mainImage = product.images[0] || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop";
   const addItem = useCartStore((state) => state.addItem);
 

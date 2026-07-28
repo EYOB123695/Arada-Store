@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { Search, ShoppingCart, Heart, User, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,14 +25,11 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
     }
   };
 
-  const [isMounted, setIsMounted] = useState(false);
-  const getTotalItems = useCartStore((state) => state.getTotalItems);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const totalItems = isMounted ? getTotalItems() : 0;
+  const totalItems = useSyncExternalStore(
+    useCartStore.subscribe,
+    () => useCartStore.getState().getTotalItems(),
+    () => 0
+  );
 
 
 
