@@ -7,6 +7,7 @@ import { Search, ShoppingCart, Heart, User, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCartStore } from "@/store/useCartStore";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface NavbarProps {
   cartCount?: number;
@@ -65,6 +66,9 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
 
         {/* Action Buttons: Wishlist, Cart & Profile */}
         <div className="flex items-center gap-3">
+         {/* Add ThemeToggle button here */}
+            <ThemeToggle />
+            
           <Link href="/wishlist">
             <Button variant="ghost" size="icon" className="rounded-full">
               <Heart className="h-5 w-5 text-gray-700 hover:text-indigo-600" />
