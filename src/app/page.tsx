@@ -41,7 +41,7 @@ export default async function HomePage({searchParams}: HomePageProps) {
   const [categories, products] = await Promise.all([categoriesPromise, productsPromise]);
 
      return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors">
       <AuthGuard />
       <Navbar />
       <main className="flex-1">

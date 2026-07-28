@@ -16,9 +16,9 @@ export default function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem);
 
   return (
-    <div className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+    <div className="group relative bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
       {/* Product Image Container */}
-      <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
+      <div className="relative aspect-square w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
         <Link href={`/products/${product.id}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -29,14 +29,14 @@ export default function ProductCard({ product }: ProductCardProps) {
         </Link>
 
         {/* Category Badge Over Image */}
-        <span className="absolute top-3 left-3 bg-white/90 backdrop-blur text-gray-800 text-xs font-semibold px-2.5 py-1 rounded-full border border-gray-200/50 shadow-sm">
+        <span className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur text-gray-800 dark:text-gray-200 text-xs font-semibold px-2.5 py-1 rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-sm">
           {product.category?.name || "General"}
         </span>
 
         {/* Quick View Button */}
         <Link
           href={`/products/${product.id}`}
-          className="absolute top-3 right-3 bg-white/90 backdrop-blur text-gray-700 hover:text-indigo-600 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="absolute top-3 right-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         >
           <Eye className="h-4 w-4" />
         </Link>
@@ -49,27 +49,27 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="flex items-center gap-1 text-amber-400 text-xs font-medium">
             <Star className="h-3.5 w-3.5 fill-amber-400" />
             <span>4.8</span>
-            <span className="text-gray-400 font-normal">(42 reviews)</span>
+            <span className="text-gray-400 dark:text-gray-500 font-normal">(42 reviews)</span>
           </div>
 
           {/* Product Title */}
           <Link href={`/products/${product.id}`}>
-            <h3 className="font-semibold text-gray-900 text-base line-clamp-1 hover:text-indigo-600 transition-colors">
+            <h3 className="font-semibold text-gray-900 dark:text-white text-base line-clamp-1 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
               {product.title}
             </h3>
           </Link>
 
           {/* Product Description */}
-          <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
+          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">
             {product.description}
           </p>
         </div>
 
         {/* Price and Add to Cart Row */}
-        <div className="flex items-center justify-between pt-2 border-t border-gray-50">
+        <div className="flex items-center justify-between pt-2 border-t border-gray-50 dark:border-gray-800">
           <div className="flex flex-col">
-            <span className="text-xs text-gray-400 uppercase font-medium">Price</span>
-            <span className="text-lg font-bold text-gray-900">${product.price.toFixed(2)}</span>
+            <span className="text-xs text-gray-400 dark:text-gray-500 uppercase font-medium">Price</span>
+            <span className="text-lg font-bold text-gray-900 dark:text-white">${product.price.toFixed(2)}</span>
           </div>
 
           <Button

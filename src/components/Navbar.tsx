@@ -68,12 +68,14 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
         <div className="flex items-center gap-3">
          {/* Add ThemeToggle button here */}
             <ThemeToggle />
-            
+
           <Link href="/wishlist">
             <Button variant="ghost" size="icon" className="rounded-full">
               <Heart className="h-5 w-5 text-gray-700 hover:text-indigo-600" />
             </Button>
           </Link>
+
+          
 
           <Link href="/cart">
 

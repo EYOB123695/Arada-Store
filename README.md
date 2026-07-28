@@ -4,17 +4,17 @@
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🛍️ **Product Catalog & Search**: Browse featured products, filter by category, and search by keywords in real-time.
-- 🛒 **Persistent Shopping Cart**: State management powered by **Zustand** with `persist` middleware (`localStorage`), ensuring cart items, quantities, and totals remain intact across page reloads.
-- ⚡ **Next.js App Router & SSR**: Fast server-side rendering and client-side navigation.
-- 🎨 **Modern Design & UI Components**: Styled with Tailwind CSS, Lucide icons, and Shadcn UI.
-- 📝 **Form Validation**: Powered by React Hook Form & Zod for type-safe form validation.
+- **Product Catalog & Search**: Browse featured products, filter by category, and search by keywords in real-time.
+-  **Persistent Shopping Cart**: State management powered by **Zustand** with `persist` middleware (`localStorage`), ensuring cart items, quantities, and totals remain intact across page reloads.
+-  **Next.js App Router & SSR**: Fast server-side rendering and client-side navigation.
+-  **Modern Design & UI Components**: Styled with Tailwind CSS, Lucide icons, and Shadcn UI.
+-  **Form Validation**: Powered by React Hook Form & Zod for type-safe form validation.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
@@ -25,7 +25,7 @@
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -37,6 +37,7 @@ Ensure you have **Node.js** (v18 or higher) installed on your system.
    ```bash
    cd Arada-store
    ```
+
 
 2. Install dependencies:
    ```bash
@@ -52,7 +53,7 @@ Ensure you have **Node.js** (v18 or higher) installed on your system.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Arada-store/

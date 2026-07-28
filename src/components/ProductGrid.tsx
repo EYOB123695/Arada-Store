@@ -13,23 +13,23 @@ export default function ProductGrid({
     isLoading = false,
 }: ProductGridProps) { 
     return (
-        <section id = "products" className = "py-12 bg-white">
-            <div className ="container px-4 md:px-8 mx-auto">
+        <section id="products" className="py-12 bg-white dark:bg-gray-950 transition-colors">
+            <div className="container px-4 md:px-8 mx-auto">
                 {/* Section Header */}
-                 <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-100">
+                 <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-100 dark:border-gray-800">
                    <div>
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Featured Products
             </h2>
 
-             <p className = "text-sm text-gray-500 mt-1">
+             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                  Explore our handpicked selection of top-quality items
 
              </p>
 
 
                  </div>
-                 <span className="bg-indigo-50 text-indigo-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-indigo-100">
+                 <span className="bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 text-xs font-semibold px-3 py-1.5 rounded-full border border-indigo-100 dark:border-indigo-900/50">
             {products.length} Products
           </span>
 
