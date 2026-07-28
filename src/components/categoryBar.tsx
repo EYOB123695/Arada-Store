@@ -30,10 +30,10 @@ export default function CategoryBar({
   };
 
   return (
-    <section id="categories" className="py-8 bg-gray-50/50 border-b">
+    <section id="categories" className="py-8 bg-gray-50/50 dark:bg-gray-950 border-b border-gray-200/50 dark:border-gray-800 transition-colors">
       <div className="container px-4 md:px-8 mx-auto">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             Browse by Category
           </h2>
           {selectedCategoryId !== null && (
@@ -41,7 +41,7 @@ export default function CategoryBar({
               variant="ghost"
               size="sm"
               onClick={() => handleSelect(null)}
-              className="text-xs text-indigo-600 hover:text-indigo-700 font-medium"
+              className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 font-medium"
             >
               Clear Filter
             </Button>
@@ -57,7 +57,7 @@ export default function CategoryBar({
             className={`rounded-full px-5 py-2 text-sm font-medium transition-all shrink-0 ${
               selectedCategoryId === null
                 ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm"
-                : "bg-white border-gray-200 text-gray-700 hover:bg-gray-100"
+                : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
             }`}
           >
             All Products
@@ -74,7 +74,7 @@ export default function CategoryBar({
                 className={`rounded-full px-4 py-2 gap-2 text-sm font-medium transition-all shrink-0 ${
                   isSelected
                     ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm"
-                    : "bg-white border-gray-200 text-gray-700 hover:bg-gray-100"
+                    : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
               >
                 {category.image && (
