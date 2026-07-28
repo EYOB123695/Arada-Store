@@ -6,15 +6,11 @@ import { PackageSearch } from "lucide-react";
 interface ProductGridProps { 
     products :Product[]; 
     isLoading? : boolean ;
-    onAddToCart ? :(product :Product) => void;
-
 }
 
 export default function ProductGrid({ 
     products, 
     isLoading = false,
-    onAddToCart,
-
 }: ProductGridProps) { 
     return (
         <section id = "products" className = "py-12 bg-white">
@@ -56,7 +52,6 @@ export default function ProductGrid({
             <ProductCard
               key={product.id}
               product={product}
-              onAddToCart={onAddToCart}
             />
           ))}
 
