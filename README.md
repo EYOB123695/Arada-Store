@@ -4,13 +4,14 @@
 
 ---
 
-##  Features
+## 🚀 Features
 
-- **Product Catalog & Search**: Browse featured products, filter by category, and search by keywords in real-time.
--  **Persistent Shopping Cart**: State management powered by **Zustand** with `persist` middleware (`localStorage`), ensuring cart items, quantities, and totals remain intact across page reloads.
--  **Next.js App Router & SSR**: Fast server-side rendering and client-side navigation.
--  **Modern Design & UI Components**: Styled with Tailwind CSS, Lucide icons, and Shadcn UI.
--  **Form Validation**: Powered by React Hook Form & Zod for type-safe form validation.
+- 🛍️ **Product Catalog & Real-Time Search**: Browse products, filter by dynamic categories, and search by keywords instantly.
+- 🛒 **Persistent Shopping Cart**: Global state management using **Zustand** with `persist` middleware (`localStorage`), preserving selected items, item quantities, and subtotal across sessions.
+- 🔐 **User Authentication**: Secure Login and Registration pages (`/login`, `/register`) with schema-validated forms powered by **React Hook Form** & **Zod**.
+- 💳 **Payment Gateway Integration**: Integrated checkout and payment processing capabilities for seamless transactions.
+- 🌗 **Dark Mode & Responsive UI**: Interactive theme switching (Light / Dark mode) with standard UI components styled via **Tailwind CSS v4** and **Lucide React**.
+- ⚡ **Next.js App Router & SSR**: Fast client-side navigation combined with optimized server-side rendering.
 
 ---
 
@@ -71,7 +72,7 @@ Arada-store/
 │   │   ├── ProductCard.tsx # Individual product display card with Add to Cart button
 │   │   └── ui/             # Reusable UI components (buttons, inputs)
 │   ├── lib/
-│   │   └── platzi-products.ts # Product API / Mock Data fetching utilities
+│   │   └── products.ts     # Product API / Data fetching utilities
 │   └── store/
 │       └── useCartStore.ts # Zustand persistent store for cart state
 ```
