@@ -74,7 +74,7 @@ function SuccessContent() {
           )}
 
           <div className="pt-2">
-            <Link href="/">
+            <Link href="/" className="block w-full">
               <Button className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-8 py-3 w-full font-semibold">
                 <ShoppingBag className="h-4 w-4 mr-2" />
                 Continue Shopping

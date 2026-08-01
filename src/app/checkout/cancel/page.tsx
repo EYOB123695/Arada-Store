@@ -26,7 +26,7 @@ export default function CheckoutCancelPage() {
           </div>
 
           <div className="pt-2 space-y-3">
-            <Link href="/checkout" className="block">
+            <Link href="/checkout" className="block w-full">
               <Button className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-8 py-3 w-full font-semibold">
                 Try Checkout Again
               </Button>

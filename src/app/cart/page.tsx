@@ -103,10 +103,10 @@ export default function CartPage() {
                 <span className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider">Total Amount</span>
                 <p className="text-3xl font-extrabold text-indigo-600">${getTotalPrice().toFixed(2)}</p>
               </div>
-              <Link href="/checkout">
-              <Button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-md shadow-indigo-100">
-                Proceed to Checkout
-              </Button>
+              <Link href="/checkout" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-md">
+                  Proceed to Checkout
+                </Button>
               </Link>
             </div>
           </div>

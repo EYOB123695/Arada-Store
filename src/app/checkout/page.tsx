@@ -107,6 +107,21 @@ export default function CheckoutPage() {
               </div>
             )}
 
+            {/* Test Mode Info Banner */}
+            <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-4 rounded-xl text-sm space-y-2">
+              <p className="font-semibold text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
+                🧪 Test Mode — No real money is charged
+              </p>
+              <p className="text-amber-600 dark:text-amber-300 text-xs">
+                On the Chapa payment page, use the following test credentials:
+              </p>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-3 font-mono text-xs space-y-1 text-gray-700 dark:text-gray-300">
+                <p><span className="text-amber-600 font-semibold">Phone:</span> 0900123456</p>
+                <p><span className="text-amber-600 font-semibold">Test Card:</span> 4242 4242 4242 4242</p>
+                <p><span className="text-amber-600 font-semibold">Expiry:</span> Any future date &nbsp;|&nbsp; <span className="text-amber-600 font-semibold">CVV:</span> 123</p>
+              </div>
+            </div>
+
             <form onSubmit={handleChapaPay} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

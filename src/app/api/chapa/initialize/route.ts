@@ -5,9 +5,23 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { email, firstName, lastName, phoneNumber, amount, currency = "ETB" } = body;
 
-    if (!email || !firstName || !lastName || !amount) {
+    if (
+      !process.env.CHAPA_SECRET_KEY ||
+      process.env.CHAPA_SECRET_KEY.includes("xxxx") ||
+      process.env.CHAPA_SECRET_KEY.includes("•")
+    ) {
       return NextResponse.json(
-        { error: "Missing required fields (email, firstName, lastName, amount)" },
+        {
+          error:
+            "CHAPA_SECRET_KEY in .env.local contains masked dots (••••••••). On the Chapa dashboard, click the 'Eye' icon or 'Copy' button to copy the unmasked secret key (starts with CHASECK_TEST-).",
+        },
+        { status: 400 }
+      );
+    }
+
+    if (!email || !firstName || !lastName || !amount || Number(amount) <= 0) {
+      return NextResponse.json(
+        { error: "Missing or invalid required fields (email, firstName, lastName, amount > 0)" },
         { status: 400 }
       );
     }
@@ -26,8 +40,8 @@ export async function POST(request: Request) {
       callback_url: `${baseUrl}/api/chapa/verify`,
       return_url: `${baseUrl}/checkout/success?tx_ref=${tx_ref}`,
       customization: {
-        title: "Arada Store Purchase",
-        description: "Payment for items in your Arada Store cart",
+        title: "Arada Store",
+        description: "Cart payment",
       },
     };
 
@@ -44,7 +58,7 @@ export async function POST(request: Request) {
 
     if (!response.ok || data.status !== "success") {
       return NextResponse.json(
-        { error: data.message || "Failed to initialize payment with Chapa" },
+        { error: data.message || JSON.stringify(data) || "Failed to initialize payment with Chapa" },
         { status: response.status || 500 }
       );
     }
