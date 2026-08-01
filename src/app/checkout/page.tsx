@@ -52,8 +52,9 @@ export default function CheckoutPage() {
       } else {
         throw new Error("No checkout URL returned from Chapa");
       }
-    } catch (err: any) {
-      setError(err.message || "An error occurred during payment processing");
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "An error occurred during payment processing";
+      setError(errorMessage);
       setLoading(false);
     }
   };

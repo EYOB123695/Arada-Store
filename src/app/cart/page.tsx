@@ -53,6 +53,7 @@ export default function CartPage() {
             <div className="divide-y divide-gray-100 dark:divide-gray-800">
               {items.map((item) => (
                 <div key={item.id} className="py-4 flex items-center justify-between gap-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
                     alt={item.name}

@@ -14,24 +14,33 @@ function SuccessContent() {
   const tx_ref = searchParams.get("tx_ref");
   const clearCart = useCartStore((state) => state.clearCart);
 
-  const [verifying, setVerifying] = useState(true);
-  const [paymentData, setPaymentData] = useState<any>(null);
+  const [verifying, setVerifying] = useState<boolean>(() => Boolean(tx_ref));
+  const [paymentData, setPaymentData] = useState<{ amount?: string | number; currency?: string } | null>(null);
 
   useEffect(() => {
-    if (tx_ref) {
-      fetch(`/api/chapa/verify?tx_ref=${tx_ref}`)
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.status === "success") {
-            setPaymentData(res.data);
-            clearCart();
-          }
-        })
-        .catch(console.error)
-        .finally(() => setVerifying(false));
-    } else {
-      setVerifying(false);
+    if (!tx_ref) {
+      return;
     }
+
+    let isMounted = true;
+    fetch(`/api/chapa/verify?tx_ref=${tx_ref}`)
+      .then((res) => res.json())
+      .then((res) => {
+        if (isMounted && res.status === "success") {
+          setPaymentData(res.data);
+          clearCart();
+        }
+      })
+      .catch(console.error)
+      .finally(() => {
+        if (isMounted) {
+          setVerifying(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, [tx_ref, clearCart]);
 
   return (
