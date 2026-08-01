@@ -29,7 +29,7 @@ export default function HeroBanner() {
           {/* Call-to-action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <Link href="#products">
-              <Button size="lg" className="rounded-full gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 h-12 text-base font-semibold shadow-lg shadow-indigo-200">
+              <Button size="lg" className="rounded-full gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 h-12 text-base font-semibold shadow-lg dark:shadow-none">
                 Shop Collection
                 <ArrowRight className="h-5 w-5" />
               </Button>

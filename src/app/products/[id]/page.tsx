@@ -144,7 +144,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               {/* Action Buttons */}
               <div className="space-y-4 pt-4 border-t border-gray-100">
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg shadow-indigo-200 transition-all flex items-center justify-center gap-2">
+                  <button className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg dark:shadow-none transition-all flex items-center justify-center gap-2">
                     <ShoppingBag className="h-5 w-5" />
                     Add to Cart
                   </button>
