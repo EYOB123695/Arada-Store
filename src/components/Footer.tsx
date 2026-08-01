@@ -88,7 +88,6 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
           <p>© {new Date().getFullYear()} AradaStore Inc. All rights reserved.</p>
-          <p>Built with Next.js App Router, Tailwind CSS & Platzi API.</p>
         </div>
       </div>
     </footer>
