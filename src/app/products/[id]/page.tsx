@@ -5,10 +5,29 @@ import Link from "next/link";
 import { ArrowLeft, Star, ShoppingBag, Truck, ShieldCheck, RefreshCw, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AuthGuard from "@/components/auth/auth-guard";
+import AuthGuard from "@/components/auth/AuthGuard";
 import ProductCard from "@/components/ProductCard";
-import { mockProducts } from "@/lib/platzi-products";
+import { Product } from "@/lib/platzi-products";
 import { useCartStore } from "@/store/useCartStore";
+
+const sampleProducts: Product[] = [
+  {
+    id: 1,
+    title: "Classic Leather Jacket",
+    price: 129.99,
+    description: "High-quality genuine leather jacket with smooth zipper details and comfortable inner lining.",
+    category: { id: 1, name: "Clothes", image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600" },
+    images: ["https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600"],
+  },
+  {
+    id: 2,
+    title: "Wireless Noise-Canceling Headphones",
+    price: 199.99,
+    description: "Immersive sound experience with active noise cancellation and 30-hour battery life.",
+    category: { id: 2, name: "Electronics", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600" },
+    images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"],
+  },
+];
 
 interface ProductPageProps {
   params: Promise<{ id: string }>;
@@ -19,13 +38,12 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
   const productId = Number(resolvedParams.id);
   const addItem = useCartStore((state) => state.addItem);
 
-  // Find product from mock products list or fallback to default
-  const product = mockProducts.find((p) => p.id === productId) || mockProducts[0];
+  const product: Product = sampleProducts.find((p: Product) => p.id === productId) || sampleProducts[0];
 
-  const relatedProducts = mockProducts.filter(
-    (p) => p.category.id === product.category.id && p.id !== product.id
+  const relatedProducts: Product[] = sampleProducts.filter(
+    (p: Product) => p.category.id === product.category.id && p.id !== product.id
   );
-  const filteredRelated = relatedProducts.slice(0, 4);
+  const filteredRelated: Product[] = relatedProducts.slice(0, 4);
 
   const mainImage =
     product.images[0] ||
@@ -71,7 +89,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               {/* Thumbnails preview */}
               {product.images.length > 1 && (
                 <div className="flex gap-3 overflow-x-auto pb-2">
-                  {product.images.map((img, idx) => (
+                  {product.images.map((img: string, idx: number) => (
                     <div
                       key={idx}
                       className="relative h-20 w-20 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shrink-0 bg-gray-50 dark:bg-gray-800"
@@ -103,7 +121,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 {/* Rating Badges */}
                 <div className="flex items-center gap-3">
                   <div className="flex items-center text-amber-400">
-                    {[...Array(5)].map((_, i) => (
+                    {[...Array(5)].map((_, i: number) => (
                       <Star
                         key={i}
                         className={`h-4 w-4 ${
@@ -201,7 +219,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {filteredRelated.map((relProduct) => (
+              {filteredRelated.map((relProduct: Product) => (
                 <ProductCard key={relProduct.id} product={relProduct} />
               ))}
             </div>
