@@ -63,3 +63,33 @@ export async function platziRegister(credentials: RegisterCredentials) {
   }
   return response.json();
 }
+export interface UserProfile { 
+  id: number ; 
+  email :string ; 
+  name : string ; 
+  role :string ; 
+  avatar :string ;
+}
+
+
+
+export async function getUserProfile(accessToken: string) : Promise<UserProfile> {
+
+  const response = await fetch(`${PLATZI_BASE_URL}/auth/profile`, {
+     method: "GET",  
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      // 💬 Attaches the JWT token into the Authorization Bearer header
+    },
+
+  });
+
+   if (!response.ok) {
+    // 💬 Checks if the response HTTP status code is not 200 OK
+    throw new Error("Session expired or invalid authentication token.");
+    // 💬 Throws an explicit error when authentication fails or token is expired
+  }
+  return response.json();
+  
+
+}

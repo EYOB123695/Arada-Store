@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";

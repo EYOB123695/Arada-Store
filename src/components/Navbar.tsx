@@ -1,23 +1,47 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
-import { Search, ShoppingCart, Heart, User, ShoppingBag } from "lucide-react";
+import { Search, ShoppingCart, Heart, User, ShoppingBag, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCartStore } from "@/store/useCartStore";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { getUserProfile, UserProfile } from "@/lib/platzi-auth";
 
 interface NavbarProps {
   cartCount?: number;
 }
 
 export default function Navbar({ cartCount = 0 }: NavbarProps) {
-
-
   const [searchQuery, setSearchQuery] = useState("");
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const [isLoadingUser, setIsLoadingUser] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("platzi_access_token");
+    if (token) {
+      getUserProfile(token)
+        .then((profile) => setUser(profile))
+        .catch(() => {
+          localStorage.removeItem("platzi_access_token");
+          localStorage.removeItem("platzi_refresh_token");
+          setUser(null);
+        })
+        .finally(() => setIsLoadingUser(false));
+    } else {
+      setIsLoadingUser(false);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("platzi_access_token");
+    localStorage.removeItem("platzi_refresh_token");
+    setUser(null);
+    router.push("/login");
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +56,7 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
     () => 0
   );
 
-
+  const displayCartCount = totalItems > 0 ? totalItems : cartCount;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200/80 dark:border-gray-800 bg-white/95 dark:bg-gray-950/95 backdrop-blur transition-colors">
@@ -66,41 +90,58 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
 
         {/* Action Buttons: Wishlist, Cart & Profile */}
         <div className="flex items-center gap-3">
-         {/* Add ThemeToggle button here */}
-            <ThemeToggle />
+          <ThemeToggle />
 
           <Link href="/wishlist">
             <Button variant="ghost" size="icon" className="rounded-full">
-              <Heart className="h-5 w-5 text-gray-700 hover:text-indigo-600" />
+              <Heart className="h-5 w-5 text-gray-700 dark:text-gray-300 hover:text-indigo-600" />
             </Button>
           </Link>
-
-          
 
           <Link href="/cart">
-
             <Button variant="outline" className="relative rounded-full gap-2 border-indigo-200 hover:border-indigo-500">
-              {totalItems > 0 && (
+              {displayCartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                  {totalItems}
+                  {displayCartCount}
                 </span>
               )}
-
               <ShoppingCart className="h-5 w-5 text-indigo-600" />
               <span className="hidden sm:inline font-medium">Cart</span>
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
             </Button>
           </Link>
 
-          <Link href="/account">
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <User className="h-5 w-5 text-gray-700 hover:text-indigo-600" />
-            </Button>
-          </Link>
+          {/* User Auth Session Header Area */}
+          {!isLoadingUser && (
+            user ? (
+              <div className="flex items-center gap-2">
+                <Link href="/profile" className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                  <img
+                    src={user.avatar || "https://picsum.photos/800"}
+                    alt={user.name || "User Profile"}
+                    className="w-8 h-8 rounded-full object-cover border border-indigo-500"
+                  />
+                  <span className="hidden lg:inline text-sm font-semibold text-gray-800 dark:text-gray-200 pr-1">
+                    {(user.name || "User").split(" ")[0]}
+                  </span>
+                </Link>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={handleLogout}
+                  title="Sign Out"
+                  className="rounded-full text-gray-500 hover:text-red-600"
+                >
+                  <LogOut className="h-4 w-4" />
+                </Button>
+              </div>
+            ) : (
+              <Link href="/login">
+                <Button variant="default" className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4">
+                  <User className="h-4 w-4 mr-1.5" /> Login
+                </Button>
+              </Link>
+            )
+          )}
         </div>
       </div>
     </header>

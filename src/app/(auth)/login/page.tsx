@@ -1,3 +1,5 @@
+"use client";
+
 import { ShoppingBag } from "lucide-react";
 import { LoginForm } from "@/components/auth/login-form";
 
