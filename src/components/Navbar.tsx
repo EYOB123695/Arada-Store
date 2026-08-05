@@ -114,30 +114,41 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
           {!isLoadingUser && (
             user ? (
               <div className="flex items-center gap-2">
-                <Link href="/profile" className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                  <img
-                    src={user.avatar || "https://picsum.photos/800"}
-                    alt={user.name || "User Profile"}
-                    className="w-8 h-8 rounded-full object-cover border border-indigo-500"
-                  />
-                  <span className="hidden lg:inline text-sm font-semibold text-gray-800 dark:text-gray-200 pr-1">
+                <Link
+                  href="/profile"
+                  className="group flex items-center gap-2.5 px-2.5 py-1.5 rounded-full bg-gray-100/80 dark:bg-gray-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-gray-200/80 dark:border-gray-700/80 transition-all duration-200 shadow-sm"
+                >
+                  <div className="relative">
+                    <img
+                      src={user.avatar || "https://picsum.photos/800"}
+                      alt={user.name || "User Profile"}
+                      className="w-8 h-8 rounded-full object-cover ring-2 ring-indigo-500/80 group-hover:scale-105 transition-transform"
+                    />
+                    <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-gray-900" />
+                  </div>
+                  <span className="hidden sm:inline text-xs font-bold text-gray-800 dark:text-gray-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                     {(user.name || "User").split(" ")[0]}
                   </span>
                 </Link>
+
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={handleLogout}
                   title="Sign Out"
-                  className="rounded-full text-gray-500 hover:text-red-600"
+                  className="rounded-full text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
                 >
                   <LogOut className="h-4 w-4" />
                 </Button>
               </div>
             ) : (
               <Link href="/login">
-                <Button variant="default" className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4">
-                  <User className="h-4 w-4 mr-1.5" /> Login
+                <Button
+                  variant="default"
+                  className="rounded-full bg-gradient-to-r from-indigo-600 via-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-semibold text-xs sm:text-sm px-4 sm:px-5 shadow-md shadow-indigo-500/20 gap-2 transition-all"
+                >
+                  <User className="h-4 w-4" />
+                  <span>Sign In</span>
                 </Button>
               </Link>
             )
