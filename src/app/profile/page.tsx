@@ -90,6 +90,7 @@ const handleLogout = () => {
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 h-36 rounded-t-3xl relative">
         {/* 💬 Decorative gradient top cover banner */}
         <div className="absolute -bottom-10 left-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={user.avatar || "https://picsum.photos/800"}
             alt={user.name || "User Avatar"}

@@ -32,7 +32,7 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
         })
         .finally(() => setIsLoadingUser(false));
     } else {
-      setIsLoadingUser(false);
+      queueMicrotask(() => setIsLoadingUser(false));
     }
   }, []);
 
@@ -119,6 +119,7 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
                   className="group flex items-center gap-2.5 px-2.5 py-1.5 rounded-full bg-gray-100/80 dark:bg-gray-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-gray-200/80 dark:border-gray-700/80 transition-all duration-200 shadow-sm"
                 >
                   <div className="relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={user.avatar || "https://picsum.photos/800"}
                       alt={user.name || "User Profile"}
